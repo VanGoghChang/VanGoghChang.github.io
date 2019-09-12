@@ -4,12 +4,10 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
-
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+一个梦想成为艺术家的每天搬砖的咸鱼码农.
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[changyuanhua@foxmail.com](mailto:email@domain.com)

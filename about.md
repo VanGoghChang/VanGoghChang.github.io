@@ -4,9 +4,7 @@ title: About
 permalink: /about/
 ---
 
-### More Information
-
-一个梦想成为艺术家的每天搬砖的咸鱼码农.
+一个梦想成为艺术家的每天辛勤搬砖的咸鱼码农.
 
 ### Contact me
 

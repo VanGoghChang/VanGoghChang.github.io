@@ -21,7 +21,7 @@ instance.evaluateScript("var nums = function(a, b){return a+b}")
 ```
 
 ##### Objective-C
-```objectivec
+```mm
 JSContext *instance = [[JSContext, alloc] init];
 [instance evaluateScript:@"var a = 10"]
 [instance evaluateScript:@"var names = ["Jack", "Mark", "Lily"]"]
@@ -38,7 +38,7 @@ let num: JSValue = instance.evaluateScript(nums(a))
 ```
 
 ##### Objective-C
-```objectivec
+```mm
 JSValue *num = [instance evaluateScript:@"nums(a)"];
 ```
 
@@ -68,7 +68,7 @@ println("Num: \(num.toInt32())")
 ```
 
 ##### Objective-C
-```objectivec
+```mm
 NSLog(@"Num: %d", [num toInt32]);
 ```
 
@@ -87,7 +87,7 @@ let nameValue = name.toString()
 ```
 
 ##### Objective-C
-```objectivec
+```mm
 JSValue *names = instance[@"names"];
 JSValue *name = name[2];
 NSString *nameValue = [name toString]
@@ -110,7 +110,7 @@ let numValue = num.toInt32()
 ```
 
 ##### Objective-C
-```objectivec
+```mm
 JSValue *numsFunction = instance[@"nums"];
 JSValue *num = [numsFunction callWithArguments:@[5]]
 NSNumber *numValue = [num toInt32]
@@ -135,7 +135,7 @@ instance.evaluateScript("function nums(a) { return a ")
 ```
 
 ##### Objective-C
-```objectivec
+```mm
 instance.exceptionHandler = ^(JSContext *context, JSValue *exception) {
    NSLog(@"JS Error: %@", exception);
 };

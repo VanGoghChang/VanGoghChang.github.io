@@ -16,12 +16,7 @@ JSContext 是运行 Javascript 代码的环境，一个 JSContext 是一个全�
 ![](/images/19_09_18/core_0.png)
 
 #### Objective-C
-```mm
-JSContext *instance = [[JSContext, alloc] init];
-[instance evaluateScript:@"var a = 10"]
-[instance evaluateScript:@"var names = ["Jack", "Mark", "Lily"]"]
-[instance evaluateScript:@"var nums = function(a){return a}"]
-```
+![](/images/19_09_18/core_1.png)
 
 
 
@@ -31,9 +26,7 @@ JSContext *instance = [[JSContext, alloc] init];
 ![](/images/19_09_18/core_2.png)
 
 #### Objective-C
-```mm
-JSValue *num = [instance evaluateScript:@"nums(a)"];
-```
+![](/images/19_09_18/core_3.png)
 
 
 
@@ -56,14 +49,10 @@ JSValue 包括一系列方法用于访问其可能的值以保证有正确的 Fo
 获取的 JSValue 的值调取相应的方法转换成目标类型的值，如上面的例子 num 应：
 
 #### Swift
-```swift
-println("Num: \(num.toInt32())")
-```
+![](/images/19_09_18/core_4.png)
 
 #### Objective-C
-```mm
-NSLog(@"Num: %d", [num toInt32]);
-```
+![](/images/19_09_18/core_5.png)
 
 
 
@@ -72,20 +61,10 @@ NSLog(@"Num: %d", [num toInt32]);
 初始化实例，成功创建变量后，我们可以使用下标值的访问我们之前创建的变量。
 
 #### Swift
-```swift
-let names = instance.objectForKeyedSubscript("names")
-let name = names.objectAtIndexedSubscript(0)
-let nameValue = name.toString()
-// Jack
-```
+![](/images/19_09_18/core_6.png)
 
 #### Objective-C
-```mm
-JSValue *names = instance[@"names"];
-JSValue *name = name[2];
-NSString *nameValue = [name toString]
-// Lily
-```
+![](/images/19_09_18/core_7.png)
 
 
 
@@ -95,20 +74,10 @@ NSString *nameValue = [name toString]
 若 JSValue 包装了一个 JavaScript 函数，在 iOS 中，我们可以从 Objective-C / Swift 代码中使用 Foundation 类型作为参数来直接调用该函数。
 
 #### Swift
-```swift
-let numsFunction = instance.objectForKeyedSubscript("nums")
-let num = numsFunction.callWithArguments([15])
-let numValue = num.toInt32()
-// 15
-```
+![](/images/19_09_18/core_8.png)
 
 #### Objective-C
-```mm
-JSValue *numsFunction = instance[@"nums"];
-JSValue *num = [numsFunction callWithArguments:@[5]]
-NSNumber *numValue = [num toInt32]
-// 5
-```
+![](/images/19_09_18/core_9.png)
 
 
 
@@ -118,22 +87,7 @@ NSNumber *numValue = [num toInt32]
 JSContext 可以通过设置上下文的 exceptionHandler 属性，你可以观察和记录语法，类型以及运行时错误。 exceptionHandler 是一个接收一个 JSContext 引用和异常本身的回调处理。
 
 #### Swift
-```swift
-instance.exceptionHandler = { context, exception in
-    println("JS Error: \(exception)")
-}
-
-instance.evaluateScript("function nums(a) { return a ")
-// JS Error: SyntaxError: Unexpected end of script
-```
+![](/images/19_09_18/core_10.png)
 
 #### Objective-C
-```mm
-instance.exceptionHandler = ^(JSContext *context, JSValue *exception) {
-   NSLog(@"JS Error: %@", exception);
-};
-
-[instance evaluateScript:@"function nums(a) { return a "];
-// JS Error: SyntaxError: Unexpected end of script
-// 5
-```
+![](/images/19_09_18/core_11.png)
